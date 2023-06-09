@@ -1,18 +1,26 @@
-<div class="offset-md-4">
-  <input type="text">
+<div class="offset-md-4 mt-2">
+  <div class="form">
+    <input [(ngModel)]="cityName" placeholder="City Name" type="text" name="cityName" id="cityName">
+    <button (click)="onSearch()">search</button>
+  </div>
 </div>
 
-<div class="col-md-4 offset-md-2">
+<div class="col-md-6 offset-md-2 mt-2">
     <div class="card">
-      <img src="../../../assets/abstract.jpg" class="card-img" alt="..." />
+      <img src="../../../assets/abstract.jpg" class="card-img" alt="background image" />
       <div class="card-img-overlay">
-        <div class="offset-md-3 display-6">{{ weatherData?.name }}</div>
-        <div class="offset-md-3 display-3">{{ weatherData?.main?.temp }} &deg; C</div>
-        <div class="offset-md-3 display-6">{{ weatherData?.weather[0].description | titlecase}}</div>
+        <div *ngIf="weatherData?.name">
+          <div class="offset-md-3 display-6">{{ weatherData?.name }}</div>
+          <div class="offset-md-3 display-3">{{ weatherData?.main?.temp }} &deg; C</div>
+          <div class="offset-md-3 display-6">{{ weatherData?.weather[0].description | titlecase}}</div>
+        </div>
+        <div *ngIf ="!weatherData?.name">
+          <div>No Data Found</div>
+        </div>
       </div>
       <div>
-        humidity: 100
-        wind speed: 20
+        <div class="m-1 display-6">Wind: {{ weatherData?.wind?.speed }}</div>
+        <div class="m-1 display-6">Humidity: {{ weatherData?.main?.humidity }}</div>
       </div>
     </div>
 </div>

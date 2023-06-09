@@ -10,20 +10,22 @@ import { WeatherService } from 'src/app/service/weather.service';
 export class DashboardComponent {
 
   weatherData: WeatherData;
+  cityName: string = '';
   constructor(
     private weatherService: WeatherService,
-  ) {
-    this.getWeatherByCityName();
-  }
+  ) {}
 
-  getWeatherByCityName() {
-    this.weatherService.getWeatherByCityName('Dhaka').subscribe(
+  getWeatherByCityName(cityName: string) {
+    this.weatherService.getWeatherByCityName(cityName).subscribe(
       (data) => {
-        console.log('res: ', data);
         this.weatherData = data;
-        console.log('city name: ', this.weatherData.name);
       }
     );
+  }
+
+  onSearch() {
+    this.getWeatherByCityName(this.cityName);
+    this.cityName = '';
   }
 
 }
