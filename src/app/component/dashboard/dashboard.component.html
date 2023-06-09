@@ -4,11 +4,11 @@
 
 <div class="col-md-4 offset-md-2">
     <div class="card">
-      <img src="../../../assets/sunrise.svg" class="card-img" alt="..." />
+      <img src="../../../assets/abstract.jpg" class="card-img" alt="..." />
       <div class="card-img-overlay">
-        <div class="offset-md-3 display-6">Dhaka</div>
-        <div class="offset-md-3 display-3">25 &deg; C</div>
-        <div class="offset-md-3 display-6">Clear Sky</div>
+        <div class="offset-md-3 display-6">{{ weatherData?.name }}</div>
+        <div class="offset-md-3 display-3">{{ weatherData?.main?.temp }} &deg; C</div>
+        <div class="offset-md-3 display-6">{{ weatherData?.weather[0].description | titlecase}}</div>
       </div>
       <div>
         humidity: 100
